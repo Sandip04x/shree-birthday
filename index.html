@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -9,8 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -20,12 +20,11 @@
 }
 
 :root {
-    --pink: #ff6195;
-    --light-pink: #ffc4da;
-    --rose: #c62d65;
-    --gold: #e9c58d;
-    --cream: #fff5e9;
-    --ink: #612b43;
+    --pink: #ff4f91;
+    --pink-light: #ffb1cf;
+    --purple: #b45bff;
+    --paper: #fff8ef;
+    --ink: #704b56;
 }
 
 html {
@@ -34,83 +33,240 @@ html {
 
 body {
     min-height: 100vh;
-    min-height: 100svh;
     overflow-x: hidden;
-    padding: 25px 12px;
-    color: #fff5f9;
-    font-family: 'Poppins', sans-serif;
-
+    font-family: 'Noto Serif Bengali', serif;
+    color: white;
     background:
-        radial-gradient(ellipse at 50% 0%, #622548, transparent 52%),
-        radial-gradient(ellipse at 0% 55%, #3b1830, transparent 45%),
-        linear-gradient(145deg, #100b19, #271025 50%, #0e0a17);
+        radial-gradient(ellipse at 50% 35%, #72245f 0%, transparent 48%),
+        radial-gradient(ellipse at 10% 80%, #3b1746 0%, transparent 50%),
+        linear-gradient(145deg, #100811, #260d2b, #130916);
+}
+
+.background-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.glow {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .3;
+    animation: glowMove 8s ease-in-out infinite alternate;
+}
+
+.glow.one {
+    background: #ff2d8d;
+    top: 10%;
+    left: -100px;
+}
+
+.glow.two {
+    background: #9d42ff;
+    right: -100px;
+    bottom: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes glowMove {
+    from { transform: translate(0, 0); }
+    to { transform: translate(35px, -30px); }
+}
+
+/* Password screen */
+
+.password-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+        radial-gradient(circle at top, #542044, transparent 55%),
+        #140b18;
+}
+
+.password-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid #ff83b644;
+    border-radius: 24px;
+    background: #ffffff0b;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 50px #ff328e16;
+}
+
+.lock-heart {
+    font-size: 55px;
+    margin-bottom: 12px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+.password-card h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    color: #ffb3d2;
+    margin-bottom: 10px;
+}
+
+.password-card p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #f5dce9;
+    margin-bottom: 20px;
+}
+
+.password-card input {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid #ff8ab9;
+    background: #ffffff0c;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.password-card input::placeholder {
+    color: #d8b8ca;
 }
 
 button {
+    cursor: pointer;
     font-family: inherit;
     -webkit-tap-highlight-color: transparent;
 }
 
-.page {
+.unlock-button {
     width: 100%;
-    max-width: 620px;
-    margin: auto;
+    border: none;
+    border-radius: 30px;
+    padding: 13px;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    background: linear-gradient(100deg, #ff4e91, #b85cff);
+    box-shadow: 0 5px 22px #ff4f9140;
+}
+
+.error-message {
+    color: #ffabc9;
+    font-size: 13px;
+    min-height: 22px;
+    margin-top: 12px;
+}
+
+/* Main page */
+
+.main-page {
+    display: none;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px 14px 40px;
     text-align: center;
 }
 
-/* HEADER */
-
-.top-heart {
-    color: #ff83ad;
-    font-size: 23px;
-    animation: heartbeat 1.8s infinite;
+.main-page.show {
+    display: block;
+    animation: fadeIn 1s ease;
 }
 
-.title {
-    margin-top: 8px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.top-label {
+    color: #f5a9c7;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.main-title {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(43px, 10vw, 75px);
-    font-weight: 700;
+    font-size: clamp(36px, 7vw, 64px);
     line-height: 1.2;
-    color: #ffc6dc;
-    text-shadow: 0 0 12px #ff589e, 0 0 30px #ff367f50;
+    color: #fff2f7;
+    text-shadow: 0 0 20px #ff4e91a0;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    margin: 10px 0 20px;
-    color: #f2c4d7;
-    font-size: 13px;
-    line-height: 1.8;
+    color: #eecddd;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 25px;
 }
 
-.date-badge {
-    display: inline-block;
-    border: 1px solid #e9c58d88;
-    background: #ffffff09;
-    color: #f7d7aa;
-    border-radius: 50px;
-    padding: 10px 18px;
-    margin-bottom: 20px;
-    font-size: 11px;
-    letter-spacing: 2px;
+.heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px auto 20px;
 }
 
-/* ENVELOPE */
+.heart-divider span {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff91b9);
+}
+
+.heart-divider span:last-child {
+    transform: rotate(180deg);
+}
+
+.heart-divider b {
+    color: #ff5798;
+    font-size: 23px;
+}
+
+/* Envelope scene */
 
 .scene {
-    height: 260px;
+    width: 100%;
+    max-width: 430px;
+    min-width: 0;
+    height: 245px;
+    margin: 0 auto 15px;
     display: flex;
+    align-items: flex-end;
     justify-content: center;
-    align-items: center;
-    perspective: 1200px;
     position: relative;
-    margin-bottom: 15px;
+    perspective: 1200px;
+}
+
+.scene:has(.envelope.open) {
+    height: 470px;
+    align-items: flex-end;
 }
 
 .envelope {
-    width: min(84vw, 370px);
-    height: 205px;
     position: relative;
+    width: min(84vw, 370px);
+    max-width: 100%;
+    min-width: 0;
+    height: 205px;
+    flex-shrink: 1;
     transform-style: preserve-3d;
     filter: drop-shadow(0 18px 24px #0008);
 }
@@ -118,175 +274,144 @@ button {
 .envelope-back {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    background: linear-gradient(140deg, #ffd2e3, #ff7db7);
     border-radius: 5px;
-    background: linear-gradient(140deg, #ffcadb, #d96a91 55%, #a82a58);
+    z-index: 0;
 }
 
-/* LETTER */
+/* Letter */
 
 .letter {
     position: absolute;
     left: 4%;
     bottom: 7px;
     width: 92%;
+    max-width: 92%;
+    min-width: 0;
     height: 176px;
     padding: 9px;
+    box-sizing: border-box;
     border: 1px solid #e3b88d;
     border-radius: 4px;
-
     background:
         radial-gradient(circle at 0% 0%, #fffdf5, transparent 55%),
         linear-gradient(145deg, #fff9ef, #ffe7e8);
-
     color: var(--ink);
     text-align: left;
     overflow-x: hidden;
     overflow-y: auto;
+    overflow-wrap: anywhere;
+    overscroll-behavior: contain;
     z-index: 2;
     box-shadow: inset 0 0 25px #dcb38b30;
-
-    transition:
-        transform 1s cubic-bezier(.2,.75,.25,1),
-        height 1s ease;
-
+    transition: transform .8s ease, height .8s ease;
     scrollbar-width: thin;
     scrollbar-color: #d26b91 #fff0ef;
 }
 
 .paper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 100%;
     position: relative;
     padding: 22px 15px 18px;
     border: 1px solid #dcb28a;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
 }
 
 .paper-top {
     text-align: center;
-    color: #ad4a6c;
-    font-size: 9px;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #aa7d82;
+    margin-bottom: 18px;
 }
 
-.paper h2 {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(28px, 7vw, 38px);
-    line-height: 1.2;
+.paper-heart {
     text-align: center;
-    color: #a32253;
-    margin-bottom: 10px;
+    color: #f44d86;
+    font-size: 21px;
+    margin-bottom: 20px;
 }
 
-.paper-date {
+.photo-frame {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto 24px;
+    border: 1px solid #dcb58c;
+    border-radius: 15px;
+    background: #fffaf4;
     text-align: center;
-    color: #a95771;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    margin-bottom: 14px;
+    box-shadow: 0 5px 12px #8b4a4112;
 }
-
-.divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: #d4507d;
-    margin: 10px 0 16px;
-}
-
-.divider span {
-    width: 45px;
-    height: 1px;
-    background: #d9a2b1;
-}
-
-/* SHREE PHOTO */
 
 .shree-photo {
-    width: 100%;
-    max-width: 270px;
-    margin: 18px auto 22px;
-    padding: 7px;
-    background: #fffaf3;
-    border: 2px solid #e7b77e;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px #8b315233;
-}
-
-.shree-photo img {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 7px;
-    object-fit: contain;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 9px;
+    background: #f5e6df;
 }
 
-.shree-photo p {
-    margin-top: 10px;
-    text-align: center;
+.photo-caption {
     font-family: 'Dancing Script', cursive;
-    font-size: 20px;
-    color: #b52d60;
+    font-size: clamp(17px, 4vw, 25px);
+    color: #b75f7c;
+    margin-top: 12px;
 }
 
-/* LETTER TEXT */
+.letter-greeting {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #7e4c5e;
+}
 
-.letter-text {
-    font-family: 'Noto Serif Bengali', serif;
+.letter-message {
     font-size: 14px;
-    line-height: 2;
+    line-height: 2.05;
+    color: #77535d;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    color: #603347;
 }
 
-.signature {
-    margin-top: 22px;
-    text-align: right;
-    color: #9f2e58;
+.letter-signature {
     font-family: 'Dancing Script', cursive;
-    font-size: 25px;
-    line-height: 1.5;
-    padding-bottom: 18px;
+    font-size: 27px;
+    color: #c64d82;
+    text-align: right;
+    margin-top: 24px;
+    padding-bottom: 15px;
 }
 
-.signature small {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
-}
+/* Envelope front */
 
-/* ENVELOPE FLAP */
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #ffb5d1, #ff4e98);
+    clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+    z-index: 4;
+    border-radius: 4px;
+    pointer-events: none;
+}
 
 .flap {
     position: absolute;
-    inset: 0;
-    z-index: 5;
-    background: linear-gradient(145deg, #ffe1e8, #f59ab8 55%, #d75c86);
-    clip-path: polygon(0 0, 100% 0, 50% 59%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 58%;
+    background: linear-gradient(145deg, #ffe0ec, #ff8cba);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
     transform-origin: top center;
-    transition: transform .85s ease;
-}
-
-.pocket {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    background: linear-gradient(135deg, #f7b3c7, #df7297 60%, #bc3b6a);
-    clip-path: polygon(0 0, 50% 59%, 100% 0, 100% 100%, 0 100%);
-}
-
-.seal {
-    position: absolute;
-    top: 43%;
-    left: 50%;
-    z-index: 6;
-    transform: translate(-50%, -50%);
-    font-size: 38px;
-    filter: drop-shadow(0 0 9px #ff4e88);
-    transition: opacity .3s;
+    transition: transform .7s ease;
+    z-index: 5;
+    backface-visibility: visible;
 }
 
 .envelope.open .flap {
@@ -294,288 +419,192 @@ button {
     z-index: 1;
 }
 
+/* Keep letter inside the envelope's sides */
+
 .envelope.open .letter {
-    height: min(470px, 60svh);
-    transform: translateY(-225px);
+    left: 4%;
+    right: auto;
+    width: 92%;
+    max-width: 92%;
+    min-width: 0;
+    height: 350px;
+    transform: translateY(-220px);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
     z-index: 3;
 }
 
-.envelope.open .seal {
-    opacity: 0;
-    pointer-events: none;
-}
+/* Buttons */
 
-/* BUTTONS */
-
-.controls {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.btn {
-    border: 1px solid #ffc4da65;
-    border-radius: 50px;
-    padding: 12px 17px;
-    color: #fff;
-    background: linear-gradient(135deg, #ff639b, #c52a65);
-    box-shadow: 0 7px 20px #ff4e8725;
-    font-size: 12px;
-    cursor: pointer;
-    transition: transform .25s, box-shadow .25s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px #ff4e8750;
-}
-
-.btn-outline {
-    background: #ffffff08;
-    border-color: #ff8db7;
-    color: #ffd4e4;
-}
-
-.btn-music {
-    background: linear-gradient(135deg, #775085, #38213f);
-}
-
-/* MUSIC CARD */
-
-.music-card {
-    display: flex;
-    align-items: center;
-    gap: 13px;
+.buttons {
     width: 100%;
-    max-width: 460px;
-    margin: 28px auto 0;
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #ffb2d044;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ffffff10, #ffffff04);
-    box-shadow: 0 10px 30px #0002;
-    backdrop-filter: blur(12px);
+    max-width: 500px;
+    margin: 22px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.album-art {
-    width: 58px;
-    height: 58px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 13px;
-    background: linear-gradient(145deg, #f9a4be, #632849);
-    font-size: 28px;
-}
-
-.music-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.song-title {
+.action-button {
+    border: 1px solid #ffffff3b;
+    padding: 12px 17px;
+    border-radius: 30px;
+    color: white;
     font-size: 13px;
     font-weight: 600;
-    color: #ffe0ec;
+    background: linear-gradient(110deg, #ff4f91, #d44ca8);
+    box-shadow: 0 6px 18px #0003;
+    transition: transform .2s ease, filter .2s ease;
 }
 
-.song-artist {
-    font-size: 10px;
-    color: #d9b5ca;
-    margin-top: 4px;
+.action-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
-.music-hint {
-    color: #d7b4c8;
-    font-size: 10px;
-    line-height: 1.7;
-    margin-top: 6px;
+.action-button.secondary {
+    background: linear-gradient(110deg, #59305f, #342044);
 }
 
-.music-note {
-    color: #ff8db7;
-    font-size: 23px;
+.action-button.music {
+    background: linear-gradient(110deg, #a45dce, #653d91);
 }
 
-/* AUDIO PLAYER */
+.song-status {
+    font-size: 12px;
+    color: #f2c9df;
+    margin-top: 15px;
+    min-height: 22px;
+}
 
-.audio-player {
-    width: 100%;
-    max-width: 460px;
-    margin: 12px auto 0;
-    display: block;
-    border-radius: 30px;
+/* Floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    15% { opacity: .75; }
+    85% { opacity: .65; }
+    100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
 }
 
 .footer {
-    margin-top: 25px;
-    padding-bottom: 15px;
-    color: #e8b3ca;
+    margin-top: 35px;
+    color: #c9a8bf;
     font-family: 'Dancing Script', cursive;
-    font-size: 23px;
+    font-size: 20px;
 }
 
-.footer span {
-    color: #ff74a4;
-}
+/* Mobile */
 
-/* FLOATING HEARTS */
-
-.floating {
-    position: fixed;
-    bottom: -35px;
-    pointer-events: none;
-    z-index: 10;
-    animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: .9;
-    }
-    100% {
-        transform: translateY(-110vh) rotate(45deg);
-        opacity: 0;
-    }
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-}
-
-/* MOBILE */
-
-@media screen and (max-width: 600px) {
-    body {
-        padding: 22px 10px 16px;
+@media (max-width: 600px) {
+    .main-page {
+        padding: 28px 12px 30px;
     }
 
-    .title {
-        font-size: clamp(42px, 12vw, 60px);
-    }
-
-    .subtitle {
-        font-size: 11px;
-        margin-bottom: 18px;
-    }
-
-    .date-badge {
-        margin-bottom: 15px;
-        padding: 9px 14px;
+    .top-label {
+        letter-spacing: 2px;
         font-size: 10px;
     }
 
+    .subtitle {
+        font-size: 12px;
+    }
+
     .scene {
-        height: 240px;
-        margin-bottom: 10px;
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .scene:has(.envelope.open) {
+        height: 410px;
     }
 
     .envelope {
-        width: min(86vw, 350px);
+        width: 86vw;
+        max-width: 350px;
         height: 185px;
     }
 
     .letter {
+        left: 4%;
+        width: 92%;
+        max-width: 92%;
         height: 158px;
         padding: 8px;
     }
 
     .paper {
-        padding: 19px 10px 15px;
-    }
-
-    .paper h2 {
-        font-size: 29px;
-    }
-
-    .letter-text {
-        font-size: 13px;
-        line-height: 1.9;
-    }
-
-    .shree-photo {
-        max-width: 220px;
+        padding: 18px 11px 15px;
     }
 
     .envelope.open .letter {
-        height: min(430px, 58svh);
-        transform: translateY(-205px);
+        left: 4%;
+        right: auto;
+        width: 92%;
+        max-width: 92%;
+        height: 300px;
+        transform: translateY(-195px);
     }
 
-    .controls {
-        gap: 8px;
+    .photo-caption {
+        font-size: 18px;
     }
 
-    .btn {
-        padding: 12px 13px;
-        font-size: 11px;
+    .letter-greeting {
+        font-size: 15px;
     }
 
-    .music-card {
-        margin-top: 25px;
-        padding: 12px;
-        gap: 10px;
+    .letter-message {
+        font-size: 13px;
+        line-height: 1.95;
     }
 
-    .album-art {
-        width: 50px;
-        height: 50px;
-        font-size: 23px;
-    }
-
-    .song-title {
+    .action-button {
+        padding: 11px 13px;
         font-size: 12px;
-    }
-
-    .footer {
-        margin-top: 20px;
     }
 }
 
-@media screen and (max-width: 360px) {
-    body {
-        padding-left: 7px;
-        padding-right: 7px;
-    }
-
-    .title {
-        font-size: 41px;
-    }
-
+@media (max-width: 360px) {
     .envelope {
         width: 87vw;
     }
 
-    .paper {
-        padding: 17px 8px 14px;
-    }
-
-    .letter-text {
-        font-size: 12px;
-        line-height: 1.85;
+    .scene:has(.envelope.open) {
+        height: 385px;
     }
 
     .envelope.open .letter {
-        transform: translateY(-190px);
-        height: min(400px, 56svh);
+        height: 280px;
+        transform: translateY(-185px);
     }
 
-    .btn {
-        padding: 11px 10px;
-        font-size: 10px;
+    .buttons {
+        gap: 8px;
+    }
+
+    .action-button {
+        padding: 10px 11px;
+        font-size: 11px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
     }
@@ -585,292 +614,335 @@ button {
 
 <body>
 
-<main class="page">
+<div class="background-glow">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+</div>
 
-    <div class="top-heart">♡</div>
+<!-- Password Screen -->
 
-    <h1 class="title">For Shree 💗</h1>
+<section class="password-screen" id="passwordScreen">
+    <div class="password-card">
+        <div class="lock-heart">💌</div>
 
-    <p class="subtitle">
-        Some feelings are better written than spoken...
-    </p>
+        <h1>A Letter For Shree</h1>
 
-    <div class="date-badge">
-        🎂 &nbsp; 26 OCTOBER &nbsp; 🎂
+        <p>
+            Someone special has made something<br>
+            just for you. ❤️<br>
+            Enter the secret password to open it.
+        </p>
+
+        <form id="passwordForm">
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password..."
+                autocomplete="off"
+                required
+            >
+
+            <button class="unlock-button" type="submit">
+                Open My Letter ❤️
+            </button>
+        </form>
+
+        <div class="error-message" id="errorMessage"></div>
+    </div>
+</section>
+
+<!-- Main Birthday Page -->
+
+<main class="main-page" id="mainPage">
+
+    <div class="top-label">
+        A LITTLE SURPRISE FOR SOMEONE SPECIAL
     </div>
 
-    <!-- ENVELOPE -->
+    <h1 class="main-title">
+        Happy Birthday, Shree! ❤️
+    </h1>
 
-    <section class="scene">
+    <p class="subtitle">
+        A little letter, a little love, and lots of happiness. 💗
+    </p>
+
+    <div class="heart-divider">
+        <span></span>
+        <b>♥</b>
+        <span></span>
+    </div>
+
+    <!-- Envelope -->
+
+    <section class="scene" id="scene">
         <div class="envelope" id="envelope">
-
             <div class="envelope-back"></div>
 
             <article class="letter" id="letter">
                 <div class="paper">
 
                     <div class="paper-top">
-                        ✦ A SPECIAL BIRTHDAY LETTER ✦
-                    </div>
-
-                    <h2>Happy Birthday, Shree! 💗</h2>
-
-                    <div class="paper-date">
                         26 OCTOBER · MADE WITH LOVE
                     </div>
 
-                    <div class="divider">
-                        <span></span> ♥️ <span></span>
+                    <div class="paper-heart">💗</div>
+
+                    <div class="photo-frame">
+                        <img
+                            class="shree-photo"
+                            src="sanushree.jpeg"
+                            alt="Shree Birthday Photo"
+                            onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='block';"
+                        >
+
+                        <div
+                            id="photoFallback"
+                            style="display:none; padding:20px 5px; color:#aa6d82;"
+                        >
+                            🌷 Shree's Special Birthday Memory 🌷
+                        </div>
+
+                        <div class="photo-caption">
+                            🌹 A Special Memory of Shree 🌹
+                        </div>
                     </div>
 
-                    <!-- SHREE PHOTO -->
+                    <h2 class="letter-greeting">
+                        প্রিয় Shree, ❤️
+                    </h2>
 
-                    <div class="shree-photo">
-                       <img src="shree.jpeg.jpeg" alt="Shree Birthday Photo">
-                        <p>🌹 A Special Memory of Shree 🌹</p>
-                    </div>
+                    <div class="letter-message" id="letterMessage"></div>
 
-                    <div class="letter-text" id="letterText"></div>
-
-                    <div class="signature">
-                        With lots of love,<br>
-                        Sanu ♡
-                        <small>MADE WITH LOVE</small>
+                    <div class="letter-signature">
+                        With love,<br>
+                        Sanu ❤️
                     </div>
 
                 </div>
             </article>
 
+            <div class="envelope-front"></div>
             <div class="flap"></div>
-            <div class="pocket"></div>
-            <div class="seal">❤️</div>
-
         </div>
     </section>
 
-    <!-- BUTTONS -->
+    <!-- Buttons -->
 
-    <div class="controls">
+    <div class="buttons">
 
-        <button class="btn" id="openBtn" onclick="openLetter()">
+        <button class="action-button" id="openButton" type="button">
             💌 Open Letter
         </button>
 
-        <button class="btn btn-outline" onclick="closeLetter()">
-            ✉ Close Letter
+        <button class="action-button secondary" id="closeButton" type="button">
+            ✉️ Close Letter
         </button>
 
-        <button class="btn btn-music" id="musicBtn" onclick="playSong()">
+        <button class="action-button music" id="musicButton" type="button">
             🎵 Birthday Song
         </button>
 
     </div>
 
-    <!-- MUSIC CARD -->
+    <div class="song-status" id="songStatus">
+        🎵 Opening the letter will try to play the song.
+    </div>
 
-    <section class="music-card">
-
-        <div class="album-art">🎂</div>
-
-        <div class="music-info">
-
-            <div class="song-title">
-                Ek Ka Nam Sinu or Ektha Junnu 💗
-            </div>
-
-            <div class="song-artist">
-                Birthday Special · For Shree
-            </div>
-
-            <div class="music-hint" id="musicHint">
-                🎵 গান চালু করার চেষ্টা করা হচ্ছে...
-            </div>
-
-        </div>
-
-        <div class="music-note">♫</div>
-
-    </section>
-
-    <!-- LOCAL AUDIO FILE -->
-
-    <audio id="birthdaySong" class="audio-player" controls loop preload="auto">
-        <source src="birthday-song.m4a.m4a"  type="audio/mp4">" type="audio/mp4">
-        তোমার ব্রাউজার অডিও চালাতে পারছে না।
-    </audio>
-
-    <footer class="footer">
-        Made with <span>♥️</span> by Sanu
-    </footer>
+    <div class="footer">
+        Made with love, just for you. 💖
+    </div>
 
 </main>
 
+<!-- Put your music file in the same folder as index.html -->
+
+<audio id="loveSong" loop preload="auto">
+    <source src="birthday-song.m4a.m4a" type="audio/mp4">
+</audio>
+
 <script>
-const envelope = document.getElementById("envelope");
-const letterText = document.getElementById("letterText");
-const openBtn = document.getElementById("openBtn");
-const birthdaySong = document.getElementById("birthdaySong");
-const musicHint = document.getElementById("musicHint");
-const musicBtn = document.getElementById("musicBtn");
+/* Password */
 
-const message = `প্রিয় Shree, ❤️
+const correctPassword = "Shree2610";
 
-শুভ জন্মদিন! 🎂🌷
+const passwordScreen = document.getElementById("passwordScreen");
+const passwordForm = document.getElementById("passwordForm");
+const passwordInput = document.getElementById("passwordInput");
+const errorMessage = document.getElementById("errorMessage");
+const mainPage = document.getElementById("mainPage");
 
-২৬ অক্টোবর তোমার এই বিশেষ দিনে
-মন থেকে চাই, তোমার জীবনটা
-সুন্দর মুহূর্ত আর মিষ্টি হাসিতে
-ভরে উঠুক।
+passwordForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-তোমার প্রতিটা সকাল নিয়ে আসুক
-নতুন আনন্দ, আর প্রতিটা দিন
-হয়ে উঠুক সুন্দর কোনো স্মৃতি।
+    if (passwordInput.value === correctPassword) {
+        passwordScreen.style.display = "none";
+        mainPage.classList.add("show");
 
-হয়তো সব অনুভূতি কথায় প্রকাশ
-করা যায় না, তবুও আজ এই ছোট্ট
-চিঠিতে তোমার জন্য কিছু কথা
-লিখে রাখলাম।
+        setTimeout(function() {
+            openLetter();
+        }, 700);
 
-তুমি সবসময় নিজের মতো করে
-হাসিখুশি থেকো, নিজের স্বপ্নগুলো
-পূরণ করো, আর জীবনের প্রতিটা
-সুন্দর মুহূর্ত উপভোগ করো।
+    } else {
+        errorMessage.textContent =
+            "Wrong password! Try again, Shree. 💗";
 
-আজকের দিনটা তোমার মতোই
-সুন্দর হোক। তোমার মুখের হাসি
-সবসময় অটুট থাকুক। 💗
-
-তোমার জন্মদিনটা হয়ে উঠুক
-অনেক আনন্দ আর সুন্দর স্মৃতিতে ভরা।
-
-Happy Birthday once again,
-Shree! 🎂🌹`;
-
-let isOpen = false;
-let typingTimer = null;
-
-/* PLAY LOCAL SONG */
-
-async function playSong() {
-    try {
-        if (birthdaySong.paused) {
-            await birthdaySong.play();
-            musicHint.textContent = "🎶 এখন গান চলছে... 💗";
-            musicBtn.textContent = "⏸ Pause Song";
-        } else {
-            birthdaySong.pause();
-            musicHint.textContent = "গান থামানো হয়েছে। আবার চালাতে চাপ দাও।";
-            musicBtn.textContent = "🎵 Birthday Song";
-        }
-    } catch (error) {
-        musicHint.textContent =
-            "গান চালু হয়নি। Birthday Song বোতামে আবার চাপ দাও।";
-    }
-}
-
-/* TRY AUTOPLAY WHEN PAGE LOADS */
-
-window.addEventListener("load", async () => {
-    try {
-        await birthdaySong.play();
-        musicHint.textContent = "🎶 এখন গান চলছে... 💗";
-        musicBtn.textContent = "⏸ Pause Song";
-    } catch (error) {
-        musicHint.textContent =
-            "অটোপ্লে ব্লক হয়েছে। গান চালাতে Birthday Song বোতামে চাপ দাও।";
+        passwordInput.value = "";
+        passwordInput.focus();
     }
 });
 
-/* OPEN LETTER */
+/* Letter message */
+
+const birthdayMessage = `আজকের দিনটা তোমার জন্য খুব স্পেশাল, Shree। ❤️
+
+শুভ জন্মদিন! 🎂💖
+
+তোমার জীবনের প্রতিটা দিন আনন্দ, হাসি আর সুন্দর সুন্দর মুহূর্তে ভরে উঠুক। তোমার সব স্বপ্ন একদিন সত্যি হোক, আর তুমি সব সময় নিজের মতো করে হাসিখুশি থেকো।
+
+জীবনের প্রতিটা নতুন সকাল তোমার জন্য নতুন আশা নিয়ে আসুক। তোমার পথের প্রতিটা বাধা পেরিয়ে তুমি অনেক দূর এগিয়ে যাও।
+
+তোমার মুখের হাসিটা যেন সব সময় এমনই সুন্দর থাকে। তোমার জীবনে ভালোবাসা, শান্তি আর সাফল্য ভরে থাকুক।
+
+আজকের এই বিশেষ দিনে তোমার জন্য রইল অনেক অনেক শুভেচ্ছা, অফুরন্ত ভালোবাসা আর একরাশ সুন্দর মুহূর্ত। 🌷💕
+
+সব সময় ভালো থেকো, নিজের যত্ন নিও, আর কখনও নিজের হাসিটা হারিয়ে ফেলো না।
+
+Once again, Happy Birthday, Shree! 🎂❤️
+
+তোমার এই বিশেষ দিনটা অনেক সুন্দর কাটুক। ✨`;
+
+const letterMessage = document.getElementById("letterMessage");
+
+let typingTimer = null;
+let typingStarted = false;
+
+function typeMessage() {
+    if (typingStarted) return;
+
+    typingStarted = true;
+    letterMessage.textContent = "";
+
+    let index = 0;
+
+    function typeNextCharacter() {
+        if (index < birthdayMessage.length) {
+            letterMessage.textContent += birthdayMessage.charAt(index);
+            index++;
+            typingTimer = setTimeout(typeNextCharacter, 32);
+        }
+    }
+
+    typeNextCharacter();
+}
+
+/* Envelope and buttons */
+
+const envelope = document.getElementById("envelope");
+const openButton = document.getElementById("openButton");
+const closeButton = document.getElementById("closeButton");
+
+const loveSong = document.getElementById("loveSong");
+const musicButton = document.getElementById("musicButton");
+const songStatus = document.getElementById("songStatus");
+
+let musicPlaying = false;
+
+/* Play music when the envelope opens */
+
+async function playBirthdaySong() {
+    try {
+        await loveSong.play();
+
+        musicPlaying = true;
+        musicButton.textContent = "⏸️ Pause Song";
+        songStatus.textContent = "🎶 গান চলছে... For Shree ❤️";
+
+    } catch (error) {
+        musicPlaying = false;
+        musicButton.textContent = "🎵 Birthday Song";
+
+        songStatus.textContent =
+            "🎵 গান চালাতে Birthday Song বাটনে একবার চাপ দাও।";
+    }
+}
 
 function openLetter() {
-    if (isOpen) return;
-
-    isOpen = true;
     envelope.classList.add("open");
-    openBtn.textContent = "💖 Letter Opened";
 
-    clearInterval(typingTimer);
-    letterText.textContent = "";
+    // Try to start music immediately when the letter opens.
+    playBirthdaySong();
 
-    let i = 0;
-
-    typingTimer = setInterval(() => {
-        if (!isOpen) {
-            clearInterval(typingTimer);
-            typingTimer = null;
-            return;
-        }
-
-        letterText.textContent += message.charAt(i);
-        i++;
-
-        if (i >= message.length) {
-            clearInterval(typingTimer);
-            typingTimer = null;
-        }
-    }, 35);
-
-    createHearts();
+    // Start the typing animation.
+    setTimeout(function() {
+        typeMessage();
+    }, 550);
 }
-
-/* CLOSE LETTER */
 
 function closeLetter() {
-    isOpen = false;
-
     envelope.classList.remove("open");
-    openBtn.textContent = "💌 Open Letter";
-
-    clearInterval(typingTimer);
-    typingTimer = null;
-
-    letterText.textContent = "";
 }
 
-/* FLOATING HEARTS */
+openButton.addEventListener("click", openLetter);
+closeButton.addEventListener("click", closeLetter);
 
-function createHearts() {
-    const symbols = ["💗", "💕", "❤️", "🌹", "✨"];
+/* Music button: play or pause */
 
-    for (let i = 0; i < 18; i++) {
-        setTimeout(() => {
-            const heart = document.createElement("span");
+musicButton.addEventListener("click", async function() {
+    if (loveSong.paused) {
+        await playBirthdaySong();
+    } else {
+        loveSong.pause();
 
-            heart.className = "floating";
-            heart.textContent =
-                symbols[Math.floor(Math.random() * symbols.length)];
-
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (15 + Math.random() * 20) + "px";
-            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-
-            document.body.appendChild(heart);
-
-            heart.addEventListener("animationend", () => heart.remove());
-        }, i * 120);
+        musicPlaying = false;
+        musicButton.textContent = "🎵 Birthday Song";
+        songStatus.textContent = "Song paused 💗";
     }
+});
+
+/* Keep the button correct if the audio stops */
+
+loveSong.addEventListener("play", function() {
+    musicPlaying = true;
+    musicButton.textContent = "⏸️ Pause Song";
+});
+
+loveSong.addEventListener("pause", function() {
+    musicPlaying = false;
+    musicButton.textContent = "🎵 Birthday Song";
+});
+
+/* Floating hearts */
+
+const heartSymbols = ["💗", "💖", "💕", "❤️", "💘", "🌸"];
+
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+    heart.textContent =
+        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (12 + Math.random() * 19) + "px";
+    heart.style.animationDuration = (7 + Math.random() * 6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 14000);
 }
 
-/* AMBIENT HEARTS */
+setInterval(createFloatingHeart, 800);
 
-setInterval(() => {
-    if (Math.random() > 0.75) {
-        const heart = document.createElement("span");
+/* Respect reduced motion preference */
 
-        heart.className = "floating";
-        heart.textContent = Math.random() > 0.5 ? "♡" : "✨";
-
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.color = "#ffb5d1";
-        heart.style.fontSize = "18px";
-        heart.style.animationDuration = "6s";
-
-        document.body.appendChild(heart);
-
-        heart.addEventListener("animationend", () => heart.remove());
-    }
-}, 1800);
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".floating-heart").forEach(function(heart) {
+        heart.remove();
+    });
+}
 </script>
 
 </body>
