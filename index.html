@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#190d20">
+
+<title>For Shree ❤️ | From Sanu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff6195;
+    --light-pink: #ffc4da;
+    --rose: #c62d65;
+    --gold: #e9c58d;
+    --cream: #fff5e9;
+    --ink: #612b43;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
+    padding: 25px 12px;
+    color: #fff5f9;
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        radial-gradient(ellipse at 50% 0%, #622548, transparent 52%),
+        radial-gradient(ellipse at 0% 55%, #3b1830, transparent 45%),
+        linear-gradient(145deg, #100b19, #271025 50%, #0e0a17);
+}
+
+button {
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+    width: 100%;
+    max-width: 620px;
+    margin: auto;
+    text-align: center;
+}
+
+/* HEADER */
+
+.top-heart {
+    color: #ff83ad;
+    font-size: 23px;
+    animation: heartbeat 1.8s infinite;
+}
+
+.title {
+    margin-top: 8px;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(43px, 10vw, 75px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffc6dc;
+    text-shadow: 0 0 12px #ff589e, 0 0 30px #ff367f50;
+}
+
+.subtitle {
+    margin: 10px 0 20px;
+    color: #f2c4d7;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.date-badge {
+    display: inline-block;
+    border: 1px solid #e9c58d88;
+    background: #ffffff09;
+    color: #f7d7aa;
+    border-radius: 50px;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* ENVELOPE */
+
+.scene {
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.envelope {
+    width: min(84vw, 370px);
+    height: 205px;
+    position: relative;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 18px 24px #0008);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 5px;
+    background: linear-gradient(140deg, #ffcadb, #d96a91 55%, #a82a58);
+}
+
+/* LETTER */
+
+.letter {
+    position: absolute;
+    left: 4%;
+    bottom: 7px;
+    width: 92%;
+    height: 176px;
+    padding: 9px;
+    border: 1px solid #e3b88d;
+    border-radius: 4px;
+
+    background:
+        radial-gradient(circle at 0% 0%, #fffdf5, transparent 55%),
+        linear-gradient(145deg, #fff9ef, #ffe7e8);
+
+    color: var(--ink);
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 2;
+    box-shadow: inset 0 0 25px #dcb38b30;
+
+    transition:
+        transform 1s cubic-bezier(.2,.75,.25,1),
+        height 1s ease;
+
+    scrollbar-width: thin;
+    scrollbar-color: #d26b91 #fff0ef;
+}
+
+.paper {
+    min-height: 100%;
+    position: relative;
+    padding: 22px 15px 18px;
+    border: 1px solid #dcb28a;
+}
+
+.paper-top {
+    text-align: center;
+    color: #ad4a6c;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.paper h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(28px, 7vw, 38px);
+    line-height: 1.2;
+    text-align: center;
+    color: #a32253;
+    margin-bottom: 10px;
+}
+
+.paper-date {
+    text-align: center;
+    color: #a95771;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+}
+
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #d4507d;
+    margin: 10px 0 16px;
+}
+
+.divider span {
+    width: 45px;
+    height: 1px;
+    background: #d9a2b1;
+}
+
+/* SHREE PHOTO */
+
+.shree-photo {
+    width: 100%;
+    max-width: 270px;
+    margin: 18px auto 22px;
+    padding: 7px;
+    background: #fffaf3;
+    border: 2px solid #e7b77e;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #8b315233;
+}
+
+.shree-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    object-fit: contain;
+}
+
+.shree-photo p {
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    color: #b52d60;
+}
+
+/* LETTER TEXT */
+
+.letter-text {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 14px;
+    line-height: 2;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: #603347;
+}
+
+.signature {
+    margin-top: 22px;
+    text-align: right;
+    color: #9f2e58;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    line-height: 1.5;
+    padding-bottom: 18px;
+}
+
+.signature small {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* ENVELOPE FLAP */
+
+.flap {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: linear-gradient(145deg, #ffe1e8, #f59ab8 55%, #d75c86);
+    clip-path: polygon(0 0, 100% 0, 50% 59%);
+    transform-origin: top center;
+    transition: transform .85s ease;
+}
+
+.pocket {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: linear-gradient(135deg, #f7b3c7, #df7297 60%, #bc3b6a);
+    clip-path: polygon(0 0, 50% 59%, 100% 0, 100% 100%, 0 100%);
+}
+
+.seal {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    font-size: 38px;
+    filter: drop-shadow(0 0 9px #ff4e88);
+    transition: opacity .3s;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .letter {
+    height: min(470px, 60svh);
+    transform: translateY(-225px);
+    z-index: 3;
+}
+
+.envelope.open .seal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* BUTTONS */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    border: 1px solid #ffc4da65;
+    border-radius: 50px;
+    padding: 12px 17px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff639b, #c52a65);
+    box-shadow: 0 7px 20px #ff4e8725;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #ff4e8750;
+}
+
+.btn-outline {
+    background: #ffffff08;
+    border-color: #ff8db7;
+    color: #ffd4e4;
+}
+
+.btn-music {
+    background: linear-gradient(135deg, #775085, #38213f);
+}
+
+/* MUSIC CARD */
+
+.music-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    max-width: 460px;
+    margin: 28px auto 0;
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ffb2d044;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ffffff10, #ffffff04);
+    box-shadow: 0 10px 30px #0002;
+    backdrop-filter: blur(12px);
+}
+
+.album-art {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #f9a4be, #632849);
+    font-size: 28px;
+}
+
+.music-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffe0ec;
+}
+
+.song-artist {
+    font-size: 10px;
+    color: #d9b5ca;
+    margin-top: 4px;
+}
+
+.music-hint {
+    color: #d7b4c8;
+    font-size: 10px;
+    line-height: 1.7;
+    margin-top: 6px;
+}
+
+.music-note {
+    color: #ff8db7;
+    font-size: 23px;
+}
+
+/* AUDIO PLAYER */
+
+.audio-player {
+    width: 100%;
+    max-width: 460px;
+    margin: 12px auto 0;
+    display: block;
+    border-radius: 30px;
+}
+
+.footer {
+    margin-top: 25px;
+    padding-bottom: 15px;
+    color: #e8b3ca;
+    font-family: 'Dancing Script', cursive;
+    font-size: 23px;
+}
+
+.footer span {
+    color: #ff74a4;
+}
+
+/* FLOATING HEARTS */
+
+.floating {
+    position: fixed;
+    bottom: -35px;
+    pointer-events: none;
+    z-index: 10;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: .9;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 600px) {
+    body {
+        padding: 22px 10px 16px;
+    }
+
+    .title {
+        font-size: clamp(42px, 12vw, 60px);
+    }
+
+    .subtitle {
+        font-size: 11px;
+        margin-bottom: 18px;
+    }
+
+    .date-badge {
+        margin-bottom: 15px;
+        padding: 9px 14px;
+        font-size: 10px;
+    }
+
+    .scene {
+        height: 240px;
+        margin-bottom: 10px;
+    }
+
+    .envelope {
+        width: min(86vw, 350px);
+        height: 185px;
+    }
+
+    .letter {
+        height: 158px;
+        padding: 8px;
+    }
+
+    .paper {
+        padding: 19px 10px 15px;
+    }
+
+    .paper h2 {
+        font-size: 29px;
+    }
+
+    .letter-text {
+        font-size: 13px;
+        line-height: 1.9;
+    }
+
+    .shree-photo {
+        max-width: 220px;
+    }
+
+    .envelope.open .letter {
+        height: min(430px, 58svh);
+        transform: translateY(-205px);
+    }
+
+    .controls {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 12px 13px;
+        font-size: 11px;
+    }
+
+    .music-card {
+        margin-top: 25px;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .album-art {
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+    }
+
+    .song-title {
+        font-size: 12px;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    body {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .title {
+        font-size: 41px;
+    }
+
+    .envelope {
+        width: 87vw;
+    }
+
+    .paper {
+        padding: 17px 8px 14px;
+    }
+
+    .letter-text {
+        font-size: 12px;
+        line-height: 1.85;
+    }
+
+    .envelope.open .letter {
+        transform: translateY(-190px);
+        height: min(400px, 56svh);
+    }
+
+    .btn {
+        padding: 11px 10px;
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+    <div class="top-heart">♡</div>
+
+    <h1 class="title">For Shree 💗</h1>
+
+    <p class="subtitle">
+        Some feelings are better written than spoken...
+    </p>
+
+    <div class="date-badge">
+        🎂 &nbsp; 26 OCTOBER &nbsp; 🎂
+    </div>
+
+    <!-- ENVELOPE -->
+
+    <section class="scene">
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+
+            <article class="letter" id="letter">
+                <div class="paper">
+
+                    <div class="paper-top">
+                        ✦ A SPECIAL BIRTHDAY LETTER ✦
+                    </div>
+
+                    <h2>Happy Birthday, Shree! 💗</h2>
+
+                    <div class="paper-date">
+                        26 OCTOBER · MADE WITH LOVE
+                    </div>
+
+                    <div class="divider">
+                        <span></span> ♥️ <span></span>
+                    </div>
+
+                    <!-- SHREE PHOTO -->
+
+                    <div class="shree-photo">
+                       <img src="C:\Users\Sandi\OneDrive\Desktop\shree-birthday\shree.jpeg.jpeg" alt="Shree Birthday Photo">
+                        <p>🌹 A Special Memory of Shree 🌹</p>
+                    </div>
+
+                    <div class="letter-text" id="letterText"></div>
+
+                    <div class="signature">
+                        With lots of love,<br>
+                        Sanu ♡
+                        <small>MADE WITH LOVE</small>
+                    </div>
+
+                </div>
+            </article>
+
+            <div class="flap"></div>
+            <div class="pocket"></div>
+            <div class="seal">❤️</div>
+
+        </div>
+    </section>
+
+    <!-- BUTTONS -->
+
+    <div class="controls">
+
+        <button class="btn" id="openBtn" onclick="openLetter()">
+            💌 Open Letter
+        </button>
+
+        <button class="btn btn-outline" onclick="closeLetter()">
+            ✉ Close Letter
+        </button>
+
+        <button class="btn btn-music" id="musicBtn" onclick="playSong()">
+            🎵 Birthday Song
+        </button>
+
+    </div>
+
+    <!-- MUSIC CARD -->
+
+    <section class="music-card">
+
+        <div class="album-art">🎂</div>
+
+        <div class="music-info">
+
+            <div class="song-title">
+                Ek Ka Nam Sinu or Ektha Junnu 💗
+            </div>
+
+            <div class="song-artist">
+                Birthday Special · For Shree
+            </div>
+
+            <div class="music-hint" id="musicHint">
+                🎵 গান চালু করার চেষ্টা করা হচ্ছে...
+            </div>
+
+        </div>
+
+        <div class="music-note">♫</div>
+
+    </section>
+
+    <!-- LOCAL AUDIO FILE -->
+
+    <audio id="birthdaySong" class="audio-player" controls loop preload="auto">
+        <source src="C:\Users\Sandi\OneDrive\Desktop\shree-birthday\birthday-song.m4a.m4a" type="audio/mp4">" type="audio/mp4">
+        তোমার ব্রাউজার অডিও চালাতে পারছে না।
+    </audio>
+
+    <footer class="footer">
+        Made with <span>♥️</span> by Sanu
+    </footer>
+
+</main>
+
+<script>
+const envelope = document.getElementById("envelope");
+const letterText = document.getElementById("letterText");
+const openBtn = document.getElementById("openBtn");
+const birthdaySong = document.getElementById("birthdaySong");
+const musicHint = document.getElementById("musicHint");
+const musicBtn = document.getElementById("musicBtn");
+
+const message = `প্রিয় Shree, ❤️
+
+শুভ জন্মদিন! 🎂🌷
+
+২৬ অক্টোবর তোমার এই বিশেষ দিনে
+মন থেকে চাই, তোমার জীবনটা
+সুন্দর মুহূর্ত আর মিষ্টি হাসিতে
+ভরে উঠুক।
+
+তোমার প্রতিটা সকাল নিয়ে আসুক
+নতুন আনন্দ, আর প্রতিটা দিন
+হয়ে উঠুক সুন্দর কোনো স্মৃতি।
+
+হয়তো সব অনুভূতি কথায় প্রকাশ
+করা যায় না, তবুও আজ এই ছোট্ট
+চিঠিতে তোমার জন্য কিছু কথা
+লিখে রাখলাম।
+
+তুমি সবসময় নিজের মতো করে
+হাসিখুশি থেকো, নিজের স্বপ্নগুলো
+পূরণ করো, আর জীবনের প্রতিটা
+সুন্দর মুহূর্ত উপভোগ করো।
+
+আজকের দিনটা তোমার মতোই
+সুন্দর হোক। তোমার মুখের হাসি
+সবসময় অটুট থাকুক। 💗
+
+তোমার জন্মদিনটা হয়ে উঠুক
+অনেক আনন্দ আর সুন্দর স্মৃতিতে ভরা।
+
+Happy Birthday once again,
+Shree! 🎂🌹`;
+
+let isOpen = false;
+let typingTimer = null;
+
+/* PLAY LOCAL SONG */
+
+async function playSong() {
+    try {
+        if (birthdaySong.paused) {
+            await birthdaySong.play();
+            musicHint.textContent = "🎶 এখন গান চলছে... 💗";
+            musicBtn.textContent = "⏸ Pause Song";
+        } else {
+            birthdaySong.pause();
+            musicHint.textContent = "গান থামানো হয়েছে। আবার চালাতে চাপ দাও।";
+            musicBtn.textContent = "🎵 Birthday Song";
+        }
+    } catch (error) {
+        musicHint.textContent =
+            "গান চালু হয়নি। Birthday Song বোতামে আবার চাপ দাও।";
+    }
+}
+
+/* TRY AUTOPLAY WHEN PAGE LOADS */
+
+window.addEventListener("load", async () => {
+    try {
+        await birthdaySong.play();
+        musicHint.textContent = "🎶 এখন গান চলছে... 💗";
+        musicBtn.textContent = "⏸ Pause Song";
+    } catch (error) {
+        musicHint.textContent =
+            "অটোপ্লে ব্লক হয়েছে। গান চালাতে Birthday Song বোতামে চাপ দাও।";
+    }
+});
+
+/* OPEN LETTER */
+
+function openLetter() {
+    if (isOpen) return;
+
+    isOpen = true;
+    envelope.classList.add("open");
+    openBtn.textContent = "💖 Letter Opened";
+
+    clearInterval(typingTimer);
+    letterText.textContent = "";
+
+    let i = 0;
+
+    typingTimer = setInterval(() => {
+        if (!isOpen) {
+            clearInterval(typingTimer);
+            typingTimer = null;
+            return;
+        }
+
+        letterText.textContent += message.charAt(i);
+        i++;
+
+        if (i >= message.length) {
+            clearInterval(typingTimer);
+            typingTimer = null;
+        }
+    }, 35);
+
+    createHearts();
+}
+
+/* CLOSE LETTER */
+
+function closeLetter() {
+    isOpen = false;
+
+    envelope.classList.remove("open");
+    openBtn.textContent = "💌 Open Letter";
+
+    clearInterval(typingTimer);
+    typingTimer = null;
+
+    letterText.textContent = "";
+}
+
+/* FLOATING HEARTS */
+
+function createHearts() {
+    const symbols = ["💗", "💕", "❤️", "🌹", "✨"];
+
+    for (let i = 0; i < 18; i++) {
+        setTimeout(() => {
+            const heart = document.createElement("span");
+
+            heart.className = "floating";
+            heart.textContent =
+                symbols[Math.floor(Math.random() * symbols.length)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (15 + Math.random() * 20) + "px";
+            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            heart.addEventListener("animationend", () => heart.remove());
+        }, i * 120);
+    }
+}
+
+/* AMBIENT HEARTS */
+
+setInterval(() => {
+    if (Math.random() > 0.75) {
+        const heart = document.createElement("span");
+
+        heart.className = "floating";
+        heart.textContent = Math.random() > 0.5 ? "♡" : "✨";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.color = "#ffb5d1";
+        heart.style.fontSize = "18px";
+        heart.style.animationDuration = "6s";
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => heart.remove());
+    }
+}, 1800);
+</script>
+
+</body>
+</html>
